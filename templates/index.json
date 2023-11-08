@@ -1,1 +1,269 @@
-{"sections":{"image_banner":{"type":"image-banner","blocks":{"heading":{"type":"heading","settings":{"heading":"BROTHERS CATTLE COMPANY","heading_size":"h0"}},"text":{"type":"text","settings":{"text":"HOME OF PRIME BRANGUS BEEF CATTLE","text_style":"subtitle"}},"button":{"type":"buttons","settings":{"button_label_1":"VIEW ALL OF OUR OPEN TREATY SALES","button_link_1":"shopify:\/\/collections\/all","button_style_secondary_1":false,"button_label_2":"","button_link_2":"","button_style_secondary_2":false}}},"block_order":["heading","text","button"],"custom_css":["h2 {color: #f1f0ea; margin-bottom: 20px; font-weight: 100; font-size: 8rem;}",".banner__text.subtitle {color: ##f1f0ea; margin-bottom: 30px; font-size: 3rem;}",".banner--desktop-transparent .banner__box {max-width: 105rem;}",".banner--large:not(.banner--adapt) {min-height: 83rem;}"],"settings":{"image":"{{ shop.brand.cover_image }}","image_overlay_opacity":40,"image_height":"large","desktop_content_position":"middle-center","show_text_box":false,"desktop_content_alignment":"center","color_scheme":"inverse","image_behavior":"none","mobile_content_alignment":"center","stack_images_on_mobile":false,"show_text_below":false}},"ac59648c-6010-4644-a12a-47ed4cabffff":{"type":"rich-text","blocks":{"template--16650384736563__ac59648c-6010-4644-a12a-47ed4cabffff-heading-1":{"type":"heading","settings":{"heading":"ABOUT BROTHERS CATTLE COMPANY","heading_size":"h1"}},"template--16650384736563__ac59648c-6010-4644-a12a-47ed4cabffff-text-1":{"type":"text","settings":{"text":"<p>OUR MISSION<\/p><p>Our mission is to breed livestock that exhibit consistent quality and outstanding performance. The Brothers Cattle Company, located near Houston Texas, is deeply committed to responsibly managing our commercial and registered Brangus cattle for sale. We leverage cutting-edge technology to deliver livestock that excel in performance while ensuring steadfast reliability to complete the task at hand. Our unwavering dedication to excellence and our commitment to meeting customer expectations drive our passionate pursuit of perfection.<\/p>"}}},"block_order":["template--16650384736563__ac59648c-6010-4644-a12a-47ed4cabffff-heading-1","template--16650384736563__ac59648c-6010-4644-a12a-47ed4cabffff-text-1"],"custom_css":["div {color: #996439; font-size: 2rem;}","@media screen and (min-width: 990px) {.rich-text__blocks {max-width: 94rem; }}",".rich-text__text p:first-of-type {color: #51493d; font-weight: 500;}"],"settings":{"desktop_content_position":"left","content_alignment":"left","color_scheme":"background-2","full_width":true,"padding_top":40,"padding_bottom":52}},"rich_text":{"type":"rich-text","blocks":{"heading":{"type":"heading","settings":{"heading":"REGISTERED BRANGUS CATTLE","heading_size":"h1"}},"text":{"type":"text","settings":{"text":"<p>OPEN TREATY SALES<\/p>"}}},"block_order":["heading","text"],"disabled":true,"custom_css":["div {color: #996439;}"],"settings":{"desktop_content_position":"left","content_alignment":"left","color_scheme":"background-2","full_width":true,"padding_top":40,"padding_bottom":0}},"featured_collection":{"type":"featured-collection","disabled":true,"settings":{"title":"Featured products","heading_size":"h2","description":"","show_description":false,"description_style":"body","collection":"all","products_to_show":8,"columns_desktop":4,"full_width":false,"show_view_all":true,"view_all_style":"solid","enable_desktop_slider":false,"color_scheme":"background-2","image_ratio":"adapt","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":false,"enable_quick_add":false,"columns_mobile":"2","swipe_on_mobile":false,"padding_top":28,"padding_bottom":36}},"collage":{"type":"collage","blocks":{"collection-0":{"type":"collection","settings":{"collection":"frontpage"}},"product":{"type":"product","settings":{"product":"brangus-bull","second_image":false}}},"block_order":["collection-0","product"],"disabled":true,"settings":{"heading":"","heading_size":"h2","desktop_layout":"left","mobile_layout":"collage","card_styles":"product-card-wrapper","color_scheme":"background-2","padding_top":36,"padding_bottom":36}},"multicolumn":{"type":"multicolumn","blocks":{"column1":{"type":"column","settings":{"title":"BULLS","text":"<p>Improve your herd  with one of our registered brangus bulls<\/p>","link_label":"","link":""}},"column2":{"type":"column","settings":{"title":"REGISTERED BRANGUS FEMALES","text":"<p>Replacment Females for sale<\/p>","link_label":"","link":""}},"column3":{"type":"column","settings":{"title":"MEATS","text":"<p>Available Whole animal price between $7.00 to $8.00 per pound hanging weight. Estimated hanging weight between 750 - 1100 pounds<\/p><p>Available Half animal price between $8.00 and $9.00 per pound hanging weight. Estimated hanging weight between 325 - 550 pounds<\/p>","link_label":"","link":""}}},"block_order":["column1","column2","column3"],"custom_css":["div {color: #996439; font-size: 2rem;}",".background-none .multicolumn-list .multicolumn-card__info,.background-none .multicolumn-list:not(.slider) .center .multicolumn-card__info {padding-left: 0; padding-right: 0;}"],"settings":{"title":"WHAT  WE OFFER","heading_size":"h1","image_width":"third","image_ratio":"adapt","columns_desktop":3,"column_alignment":"left","background_style":"none","button_label":"","button_link":"","color_scheme":"background-2","columns_mobile":"1","swipe_on_mobile":false,"padding_top":40,"padding_bottom":52}},"7daa5c3c-a1e0-4da9-989d-efe8652b2949":{"type":"contact-form","custom_css":["@media screen and (min-width: 1159px) {.contact {max-width: 112rem; }}"],"settings":{"heading":"CONTACT US","heading_size":"h1","color_scheme":"background-2","padding_top":36,"padding_bottom":36}}},"order":["image_banner","ac59648c-6010-4644-a12a-47ed4cabffff","rich_text","featured_collection","collage","multicolumn","7daa5c3c-a1e0-4da9-989d-efe8652b2949"]}
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "BROTHERS CATTLE COMPANY",
+            "heading_size": "h0"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "HOME OF PRIME BRANGUS BEEF CATTLE",
+            "text_style": "subtitle"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "VIEW ALL OF OUR OPEN TREATY SALES",
+            "button_link_1": "shopify:\/\/collections\/all",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "custom_css": [
+        "h2 {color: #f1f0ea; margin-bottom: 20px; font-weight: 100; font-size: 8rem;}",
+        ".banner__text.subtitle {color: ##f1f0ea; margin-bottom: 30px; font-size: 3rem;}",
+        ".banner--desktop-transparent .banner__box {max-width: 105rem;}",
+        ".banner--large:not(.banner--adapt) {min-height: 83rem;}",
+        "@media (max-width: 600px) {h2 {font-size:5.5rem; } .banner__text.subtitle {font-size: 2rem;}}"
+      ],
+      "settings": {
+        "image": "{{ shop.brand.cover_image }}",
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "inverse",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "ac59648c-6010-4644-a12a-47ed4cabffff": {
+      "type": "rich-text",
+      "blocks": {
+        "template--16650384736563__ac59648c-6010-4644-a12a-47ed4cabffff-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "ABOUT BROTHERS CATTLE COMPANY",
+            "heading_size": "h1"
+          }
+        },
+        "template--16650384736563__ac59648c-6010-4644-a12a-47ed4cabffff-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>OUR MISSION<\/p><p>Our mission is to breed livestock that exhibit consistent quality and outstanding performance. The Brothers Cattle Company, located near Houston Texas, is deeply committed to responsibly managing our commercial and registered Brangus cattle for sale. We leverage cutting-edge technology to deliver livestock that excel in performance while ensuring steadfast reliability to complete the task at hand. Our unwavering dedication to excellence and our commitment to meeting customer expectations drive our passionate pursuit of perfection.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--16650384736563__ac59648c-6010-4644-a12a-47ed4cabffff-heading-1",
+        "template--16650384736563__ac59648c-6010-4644-a12a-47ed4cabffff-text-1"
+      ],
+      "custom_css": [
+        "div {color: #996439; font-size: 2rem;}",
+        "@media screen and (min-width: 990px) {.rich-text__blocks {max-width: 94rem; }}",
+        ".rich-text__text p:first-of-type {color: #51493d; font-weight: 500;}"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "background-2",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "REGISTERED BRANGUS CATTLE",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>OPEN TREATY SALES<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "div {color: #996439;}"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "background-2",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "background-2",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 28,
+        "padding_bottom": 36
+      }
+    },
+    "collage": {
+      "type": "collage",
+      "blocks": {
+        "collection-0": {
+          "type": "collection",
+          "settings": {
+            "collection": "frontpage"
+          }
+        },
+        "product": {
+          "type": "product",
+          "settings": {
+            "product": "brangus-bull",
+            "second_image": false
+          }
+        }
+      },
+      "block_order": [
+        "collection-0",
+        "product"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "heading_size": "h2",
+        "desktop_layout": "left",
+        "mobile_layout": "collage",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "background-2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn": {
+      "type": "multicolumn",
+      "blocks": {
+        "column1": {
+          "type": "column",
+          "settings": {
+            "title": "BULLS",
+            "text": "<p>Improve your herd  with one of our registered brangus bulls<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column2": {
+          "type": "column",
+          "settings": {
+            "title": "REGISTERED BRANGUS FEMALES",
+            "text": "<p>Replacment Females for sale<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column3": {
+          "type": "column",
+          "settings": {
+            "title": "MEATS",
+            "text": "<p>Available Whole animal price between $7.00 to $8.00 per pound hanging weight. Estimated hanging weight between 750 - 1100 pounds<\/p><p>Available Half animal price between $8.00 and $9.00 per pound hanging weight. Estimated hanging weight between 325 - 550 pounds<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column1",
+        "column2",
+        "column3"
+      ],
+      "custom_css": [
+        "div {color: #996439; font-size: 2rem;}",
+        ".background-none .multicolumn-list .multicolumn-card__info,.background-none .multicolumn-list:not(.slider) .center .multicolumn-card__info {padding-left: 0; padding-right: 0;}"
+      ],
+      "settings": {
+        "title": "WHAT  WE OFFER",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "7daa5c3c-a1e0-4da9-989d-efe8652b2949": {
+      "type": "contact-form",
+      "custom_css": [
+        "@media screen and (min-width: 1159px) {.contact {max-width: 112rem; }}"
+      ],
+      "settings": {
+        "heading": "CONTACT US",
+        "heading_size": "h1",
+        "color_scheme": "background-2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "ac59648c-6010-4644-a12a-47ed4cabffff",
+    "rich_text",
+    "featured_collection",
+    "collage",
+    "multicolumn",
+    "7daa5c3c-a1e0-4da9-989d-efe8652b2949"
+  ]
+}
