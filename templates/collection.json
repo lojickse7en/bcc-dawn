@@ -32,7 +32,7 @@
     "7da7956a-0d6a-4de5-b55e-bb56b7595bb9": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<br>\n<br>",
+        "custom_liquid": "<br>",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 52
