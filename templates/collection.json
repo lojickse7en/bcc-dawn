@@ -29,6 +29,15 @@
         "padding_bottom": 36
       }
     },
+    "7da7956a-0d6a-4de5-b55e-bb56b7595bb9": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<br>\n<br>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "7f55ec9b-e0a6-4f4c-a074-dec4c71319b3": {
       "type": "image-with-text",
       "blocks": {
@@ -129,6 +138,7 @@
   "order": [
     "banner",
     "product-grid",
+    "7da7956a-0d6a-4de5-b55e-bb56b7595bb9",
     "7f55ec9b-e0a6-4f4c-a074-dec4c71319b3",
     "cdfa27bc-989e-4ea0-a756-c5afe604fbf4"
   ]
