@@ -43,17 +43,6 @@
         "padding_bottom": 36
       }
     },
-    "main": {
-      "type": "main-page",
-      "disabled": true,
-      "custom_css": [
-        "h1 {text-align: center;}"
-      ],
-      "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
-      }
-    },
     "e37f878d-6ddc-49d3-ae5d-b67ded7c7fac": {
       "type": "multirow",
       "blocks": {
@@ -162,6 +151,7 @@
         },
         "template--21547977081139__4bbb2da3-11b4-4748-b4a3-484cdc10ded2-button-1": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "button_label": "CONTACT US",
             "button_link": "shopify:\/\/pages\/contact",
@@ -189,30 +179,22 @@
         "padding_bottom": 52
       }
     },
-    "169936670477ac8d53": {
-      "type": "apps",
-      "blocks": {
-        "80906987-cbc0-4523-be0e-50bec8ccbdaf": {
-          "type": "shopify:\/\/apps\/powr-contact-form\/blocks\/app-block\/1412fe37-d89c-4706-a797-6e2b53cb4a69",
-          "settings": {
-            "app_id": "Your app ID here"
-          }
-        }
-      },
-      "block_order": [
-        "80906987-cbc0-4523-be0e-50bec8ccbdaf"
+    "main": {
+      "type": "main-page",
+      "custom_css": [
+        "h1 {text-align: center;}"
       ],
       "settings": {
-        "include_margins": true
+        "padding_top": 28,
+        "padding_bottom": 28
       }
     }
   },
   "order": [
     "5f7db3a3-9d55-4eb2-9171-b12a56927ad8",
-    "main",
     "e37f878d-6ddc-49d3-ae5d-b67ded7c7fac",
     "3054d6ca-13c6-4811-9497-2cbc119a1eee",
     "4bbb2da3-11b4-4748-b4a3-484cdc10ded2",
-    "169936670477ac8d53"
+    "main"
   ]
 }
