@@ -182,7 +182,7 @@
     "main": {
       "type": "main-page",
       "custom_css": [
-        "h1 {text-align: center;}"
+        "h1 {\/* text-align: center; *\/ display: none;}"
       ],
       "settings": {
         "padding_top": 28,
