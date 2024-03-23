@@ -336,6 +336,14 @@
             "heading_size": "h1"
           }
         },
+        "caption_DGky4m": {
+          "type": "caption",
+          "settings": {
+            "caption": "SOLD",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "large"
+          }
+        },
         "template--21604429365555__8d1380a1-404e-4210-b5d3-dfdbc6b20a5b-text-1": {
           "type": "text",
           "disabled": true,
@@ -355,6 +363,7 @@
       },
       "block_order": [
         "template--21604429365555__8d1380a1-404e-4210-b5d3-dfdbc6b20a5b-heading-1",
+        "caption_DGky4m",
         "template--21604429365555__8d1380a1-404e-4210-b5d3-dfdbc6b20a5b-text-1",
         "template--21604429365555__8d1380a1-404e-4210-b5d3-dfdbc6b20a5b-button-1"
       ],
