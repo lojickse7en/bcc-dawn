@@ -10,6 +10,7 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "disabled": true,
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
@@ -70,7 +71,199 @@
         "template--21591146103091__7f55ec9b-e0a6-4f4c-a074-dec4c71319b3-button-1"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/M-15.jpg",
+        "image": "shopify:\/\/shop_images\/M_4.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_tdXMH8": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_wJWzLr": {
+          "type": "heading",
+          "settings": {
+            "heading": "STEER #7",
+            "heading_size": "h1"
+          }
+        },
+        "text_rUJATD": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "button_bJHbcP": {
+          "type": "button",
+          "settings": {
+            "button_label": "CONTACT US FOR PURCHASE",
+            "button_link": "shopify:\/\/pages\/contact",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_wJWzLr",
+        "text_rUJATD",
+        "button_bJHbcP"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/M_7_4.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_HdUitn": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_aQbU6X": {
+          "type": "heading",
+          "settings": {
+            "heading": "STEER #9",
+            "heading_size": "h1"
+          }
+        },
+        "text_Nn4CNz": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "button_bqHkwk": {
+          "type": "button",
+          "settings": {
+            "button_label": "CONTACT US FOR PURCHASE",
+            "button_link": "shopify:\/\/pages\/contact",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_aQbU6X",
+        "text_Nn4CNz",
+        "button_bqHkwk"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/M_9.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_76iVne": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_BjKVyP": {
+          "type": "heading",
+          "settings": {
+            "heading": "STEER #10",
+            "heading_size": "h1"
+          }
+        },
+        "text_i7Xmqk": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "button_UtUWEz": {
+          "type": "button",
+          "settings": {
+            "button_label": "CONTACT US FOR PURCHASE",
+            "button_link": "shopify:\/\/pages\/contact",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_BjKVyP",
+        "text_i7Xmqk",
+        "button_UtUWEz"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/M_10.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_Y7iPHn": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_CtQGRm": {
+          "type": "heading",
+          "settings": {
+            "heading": "STEER #13",
+            "heading_size": "h1"
+          }
+        },
+        "text_8RGCgc": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "button_Y4Qiaj": {
+          "type": "button",
+          "settings": {
+            "button_label": "CONTACT US FOR PURCHASE",
+            "button_link": "shopify:\/\/pages\/contact",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_CtQGRm",
+        "text_8RGCgc",
+        "button_Y4Qiaj"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/M_13.jpg",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
@@ -235,6 +428,10 @@
     "product-grid",
     "7da7956a-0d6a-4de5-b55e-bb56b7595bb9",
     "7f55ec9b-e0a6-4f4c-a074-dec4c71319b3",
+    "image_with_text_tdXMH8",
+    "image_with_text_HdUitn",
+    "image_with_text_76iVne",
+    "image_with_text_Y7iPHn",
     "image_with_text_FDMBf7",
     "8d1380a1-404e-4210-b5d3-dfdbc6b20a5b",
     "cdfa27bc-989e-4ea0-a756-c5afe604fbf4"
