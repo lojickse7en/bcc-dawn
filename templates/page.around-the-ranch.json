@@ -112,7 +112,7 @@
         "slide_E9ebca"
       ],
       "settings": {
-        "layout": "full_bleed",
+        "layout": "grid",
         "slide_height": "large",
         "slider_visual": "dots",
         "auto_rotate": true,
