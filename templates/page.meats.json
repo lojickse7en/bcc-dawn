@@ -96,7 +96,7 @@
           "settings": {
             "heading": "HALF BRANGUS",
             "icon": "none",
-            "row_content": "<p>Available Half animal price between $9 per pound hanging weight. Estimated hanging weight between 325 - 550 pounds<\/p>",
+            "row_content": "<p>Available Half animal price $9 per pound hanging weight. Estimated hanging weight between 325 - 550 pounds<\/p>",
             "page": ""
           }
         },
@@ -105,7 +105,7 @@
           "settings": {
             "heading": "WHOLE BRANGUS",
             "icon": "none",
-            "row_content": "<p>Available Whole animal price between 9 per pound hanging weight. Estimated hanging weight between 750 - 1100 pounds.<\/p>",
+            "row_content": "<p>Available Whole animal price $9 per pound hanging weight. Estimated hanging weight between 750 - 1100 pounds.<\/p>",
             "page": ""
           }
         }
