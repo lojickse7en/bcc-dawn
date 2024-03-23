@@ -39,10 +39,10 @@
         ".banner__text.subtitle {color: ##f1f0ea; margin-bottom: 30px; font-size: 3rem;}",
         ".banner--desktop-transparent .banner__box {max-width: 105rem;}",
         ".banner--large:not(.banner--adapt) {min-height: 83rem;}",
-        "@media (max-width: 600px) {h2 {font-size:5.5rem; } .banner__text.subtitle {font-size: 2rem;}}"
+        "@media (max-width: 600px) {h2 {font-size: 5.5rem; } .banner__text.subtitle {font-size: 2rem; }}"
       ],
       "settings": {
-        "image": "{{ shop.brand.cover_image }}",
+        "image": "shopify:\/\/shop_images\/IMG_1324.jpg",
         "image_overlay_opacity": 40,
         "image_height": "large",
         "desktop_content_position": "middle-center",
