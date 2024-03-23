@@ -42,7 +42,7 @@
         "@media (max-width: 600px) {h2 {font-size: 5.5rem; } .banner__text.subtitle {font-size: 2rem; }}"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/IMG_1324.jpg",
+        "image": "shopify:\/\/shop_images\/IMG_1424.jpg",
         "image_overlay_opacity": 40,
         "image_height": "large",
         "desktop_content_position": "middle-center",
