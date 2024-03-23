@@ -48,6 +48,14 @@
             "heading_size": "h1"
           }
         },
+        "caption_nQJqYk": {
+          "type": "caption",
+          "settings": {
+            "caption": "SOLD",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "large"
+          }
+        },
         "template--21591146103091__7f55ec9b-e0a6-4f4c-a074-dec4c71319b3-text-1": {
           "type": "text",
           "disabled": true,
@@ -67,6 +75,7 @@
       },
       "block_order": [
         "template--21591146103091__7f55ec9b-e0a6-4f4c-a074-dec4c71319b3-heading-1",
+        "caption_nQJqYk",
         "template--21591146103091__7f55ec9b-e0a6-4f4c-a074-dec4c71319b3-text-1",
         "template--21591146103091__7f55ec9b-e0a6-4f4c-a074-dec4c71319b3-button-1"
       ],
