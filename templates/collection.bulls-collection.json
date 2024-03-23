@@ -48,6 +48,14 @@
             "heading_size": "h1"
           }
         },
+        "caption_xqxaq3": {
+          "type": "caption",
+          "settings": {
+            "caption": "SOLD",
+            "text_style": "subtitle",
+            "text_size": "large"
+          }
+        },
         "template--21591146103091__7f55ec9b-e0a6-4f4c-a074-dec4c71319b3-text-1": {
           "type": "text",
           "disabled": true,
@@ -58,6 +66,7 @@
         },
         "template--21591146103091__7f55ec9b-e0a6-4f4c-a074-dec4c71319b3-button-1": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "button_label": "CONTACT US FOR PURCHASE",
             "button_link": "shopify:\/\/pages\/contact",
@@ -67,6 +76,7 @@
       },
       "block_order": [
         "template--21591146103091__7f55ec9b-e0a6-4f4c-a074-dec4c71319b3-heading-1",
+        "caption_xqxaq3",
         "template--21591146103091__7f55ec9b-e0a6-4f4c-a074-dec4c71319b3-text-1",
         "template--21591146103091__7f55ec9b-e0a6-4f4c-a074-dec4c71319b3-button-1"
       ],
@@ -96,6 +106,14 @@
             "heading_size": "h1"
           }
         },
+        "caption_hFtnMr": {
+          "type": "caption",
+          "settings": {
+            "caption": "SOLD",
+            "text_style": "subtitle",
+            "text_size": "large"
+          }
+        },
         "template--21591146103091__cdfa27bc-989e-4ea0-a756-c5afe604fbf4-text-1": {
           "type": "text",
           "disabled": true,
@@ -106,6 +124,7 @@
         },
         "template--21591146103091__cdfa27bc-989e-4ea0-a756-c5afe604fbf4-button-1": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "button_label": "CONTACT US FOR PURCHASE",
             "button_link": "shopify:\/\/pages\/contact",
@@ -115,6 +134,7 @@
       },
       "block_order": [
         "template--21591146103091__cdfa27bc-989e-4ea0-a756-c5afe604fbf4-heading-1",
+        "caption_hFtnMr",
         "template--21591146103091__cdfa27bc-989e-4ea0-a756-c5afe604fbf4-text-1",
         "template--21591146103091__cdfa27bc-989e-4ea0-a756-c5afe604fbf4-button-1"
       ],
@@ -144,6 +164,14 @@
             "heading_size": "h1"
           }
         },
+        "caption_E9PCit": {
+          "type": "caption",
+          "settings": {
+            "caption": "SOLD",
+            "text_style": "subtitle",
+            "text_size": "large"
+          }
+        },
         "template--21604429365555__8d1380a1-404e-4210-b5d3-dfdbc6b20a5b-text-1": {
           "type": "text",
           "disabled": true,
@@ -154,6 +182,7 @@
         },
         "template--21604429365555__8d1380a1-404e-4210-b5d3-dfdbc6b20a5b-button-1": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "button_label": "CONTACT US FOR PURCHASE",
             "button_link": "shopify:\/\/pages\/contact",
@@ -163,6 +192,7 @@
       },
       "block_order": [
         "template--21604429365555__8d1380a1-404e-4210-b5d3-dfdbc6b20a5b-heading-1",
+        "caption_E9PCit",
         "template--21604429365555__8d1380a1-404e-4210-b5d3-dfdbc6b20a5b-text-1",
         "template--21604429365555__8d1380a1-404e-4210-b5d3-dfdbc6b20a5b-button-1"
       ],
