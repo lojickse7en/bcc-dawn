@@ -80,6 +80,9 @@
         "template--21591146103091__7f55ec9b-e0a6-4f4c-a074-dec4c71319b3-text-1",
         "template--21591146103091__7f55ec9b-e0a6-4f4c-a074-dec4c71319b3-button-1"
       ],
+      "custom_css": [
+        "p.image-with-text__text.image-with-text__text--caption.subtitle.subtitle--large.subtitle {color: #d94f4f;}"
+      ],
       "settings": {
         "image": "shopify:\/\/shop_images\/IMG_1304.jpg",
         "height": "adapt",
@@ -137,6 +140,9 @@
         "caption_qeWyPD",
         "template--21591146103091__cdfa27bc-989e-4ea0-a756-c5afe604fbf4-text-1",
         "template--21591146103091__cdfa27bc-989e-4ea0-a756-c5afe604fbf4-button-1"
+      ],
+      "custom_css": [
+        "p.image-with-text__text.image-with-text__text--caption.subtitle.subtitle--large.subtitle {color: #d94f4f;}"
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/IMG_1296_cbb6ad3e-9b03-4afe-b10e-cb3a1c02989e.jpg",
