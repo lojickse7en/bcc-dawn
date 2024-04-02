@@ -38,18 +38,77 @@
         "padding_bottom": 52
       }
     },
+    "image_with_text_9F3kzb": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_3karwg": {
+          "type": "heading",
+          "settings": {
+            "heading": "MALE #29",
+            "heading_size": "h1"
+          }
+        },
+        "caption_AxjbBE": {
+          "type": "caption",
+          "disabled": true,
+          "settings": {
+            "caption": "SOLD",
+            "text_style": "subtitle",
+            "text_size": "large"
+          }
+        },
+        "text_RP3d7t": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "button_CWjmVD": {
+          "type": "button",
+          "settings": {
+            "button_label": "CONTACT US FOR PURCHASE",
+            "button_link": "shopify:\/\/pages\/contact",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_3karwg",
+        "caption_AxjbBE",
+        "text_RP3d7t",
+        "button_CWjmVD"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/29_sire_1_cropped.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "7f55ec9b-e0a6-4f4c-a074-dec4c71319b3": {
       "type": "image-with-text",
       "blocks": {
         "template--21591146103091__7f55ec9b-e0a6-4f4c-a074-dec4c71319b3-heading-1": {
           "type": "heading",
           "settings": {
-            "heading": "MALE #17",
+            "heading": "MALE #38",
             "heading_size": "h1"
           }
         },
         "caption_xqxaq3": {
           "type": "caption",
+          "disabled": true,
           "settings": {
             "caption": "SOLD",
             "text_style": "subtitle",
@@ -66,7 +125,6 @@
         },
         "template--21591146103091__7f55ec9b-e0a6-4f4c-a074-dec4c71319b3-button-1": {
           "type": "button",
-          "disabled": true,
           "settings": {
             "button_label": "CONTACT US FOR PURCHASE",
             "button_link": "shopify:\/\/pages\/contact",
@@ -79,6 +137,122 @@
         "caption_xqxaq3",
         "template--21591146103091__7f55ec9b-e0a6-4f4c-a074-dec4c71319b3-text-1",
         "template--21591146103091__7f55ec9b-e0a6-4f4c-a074-dec4c71319b3-button-1"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/38_sire_5_cropped.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_fzHigV": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_AfnKLL": {
+          "type": "heading",
+          "settings": {
+            "heading": "MALE #34",
+            "heading_size": "h1"
+          }
+        },
+        "caption_CV766x": {
+          "type": "caption",
+          "disabled": true,
+          "settings": {
+            "caption": "SOLD",
+            "text_style": "subtitle",
+            "text_size": "large"
+          }
+        },
+        "text_aAHTbD": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "button_QKXEBg": {
+          "type": "button",
+          "settings": {
+            "button_label": "CONTACT US FOR PURCHASE",
+            "button_link": "shopify:\/\/pages\/contact",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_AfnKLL",
+        "caption_CV766x",
+        "text_aAHTbD",
+        "button_QKXEBg"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/34_sire_2_cropped.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_9zDrDC": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_GFEx4d": {
+          "type": "heading",
+          "settings": {
+            "heading": "MALE #17",
+            "heading_size": "h1"
+          }
+        },
+        "caption_WgkJiH": {
+          "type": "caption",
+          "settings": {
+            "caption": "SOLD",
+            "text_style": "subtitle",
+            "text_size": "large"
+          }
+        },
+        "text_JAcL8k": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "button_HXrRwy": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "CONTACT US FOR PURCHASE",
+            "button_link": "shopify:\/\/pages\/contact",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_GFEx4d",
+        "caption_WgkJiH",
+        "text_JAcL8k",
+        "button_HXrRwy"
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/IMG_1271.jpg",
@@ -217,7 +391,10 @@
     "banner",
     "product-grid",
     "7da7956a-0d6a-4de5-b55e-bb56b7595bb9",
+    "image_with_text_9F3kzb",
     "7f55ec9b-e0a6-4f4c-a074-dec4c71319b3",
+    "image_with_text_fzHigV",
+    "image_with_text_9zDrDC",
     "cdfa27bc-989e-4ea0-a756-c5afe604fbf4",
     "8d1380a1-404e-4210-b5d3-dfdbc6b20a5b"
   ]
