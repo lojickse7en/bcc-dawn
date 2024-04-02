@@ -1,0 +1,1161 @@
+{% comment %}#component#["settings/heading","settings/media-settings-3","settings/layout-settings","settings/section-padding","blocks/background","settings/design-mode","settings/animation-settings","settings/rating","settings/slider-pagination-1-style"]#endcomponent#{% endcomment %}
+{% comment %} swiper.js {% endcomment %}
+{{ 'smi-swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'smi-swiper-bundle.min.js' | asset_url }}" defer data-id="swiper"></script>
+{% liquid
+    assign space_between_mobile = settings.smi_spacing_grid_horizontal | at_most: 15
+    assign space_between_desktop = settings.smi_spacing_grid_horizontal
+    assign custom_blocks_image = section.blocks | where: 'type', 'image_block' | size
+    assign custom_blocks_videos = section.blocks | where: 'type', 'video_block' | size
+    assign block_length = custom_blocks_image | plus: custom_blocks_videos
+    assign slides_per_view_desktop = section.settings.number_of_columns_on_desktop
+    assign slides_per_view_laptop = 3 | at_most: slides_per_view_desktop
+    assign slides_per_view_tablet = 2 | at_most: slides_per_view_desktop
+    assign slides_per_view_mobile = section.settings.number_of_columns_on_mobile | at_most: block_length
+    if section.settings.enable_swipe_on_mobile == true
+        assign offset_swiper_mobile = 30
+    else
+        assign offset_swiper_mobile = 0
+    endif
+    if block_length == slides_per_view_mobile
+        assign offset_swiper_mobile = 0
+    endif
+    if section.settings.content_alignment == 'left'
+        assign classes_position_button = 'smi-justify-content-start'
+    elsif section.settings.content_alignment == 'right'
+        assign classes_position_button = 'smi-justify-content-end'
+    else
+        assign classes_position_button = 'smi-justify-content-center'
+    endif
+%}
+<style>
+    {% assign colorblock = section.blocks | where: 'type', 'color' | first %}
+{% if colorblock %}
+      #shopify-section-{{ section.id }},
+      #shopify-section-{{ section.id }} .smi-color-{{ section.settings.color_scheme }},
+      .smi-block-custom-color { 
+        --color-background: {{ colorblock.settings.background_color.red }}, {{ colorblock.settings.background_color.green }},{{ colorblock.settings.background_color.blue }};        
+        {% if colorblock.settings.background_gradient_color == blank %}
+            --gradient-background: {{ colorblock.settings.background_color }};
+        {% else %}
+            --gradient-background: {{ colorblock.settings.background_gradient_color }};
+        {% endif %}
+        --color-foreground-hex: {{ colorblock.settings.text_color }};
+        --color-foreground: {{ colorblock.settings.text_color.red }}, {{ colorblock.settings.text_color.green }},{{ colorblock.settings.text_color.blue }};
+        --color-subtext: {{ colorblock.settings.subtext_color.red }},{{ colorblock.settings.subtext_color.green }},{{ colorblock.settings.subtext_color.blue }};
+        --color-button: {{ colorblock.settings.solid_background_button_color.red }}, {{ colorblock.settings.solid_background_button_color.green }},{{ colorblock.settings.solid_background_button_color.blue }};
+        --color-button-text: {{ colorblock.settings.solid_button_label_color.red }}, {{ colorblock.settings.solid_button_label_color.green }},{{ colorblock.settings.solid_button_label_color.blue }};
+        --color-secondary-button-text: {{ colorblock.settings.outline_button_color.red }}, {{ colorblock.settings.outline_button_color.green }},{{ colorblock.settings.outline_button_color.blue }};
+        --color-shadow: {{ colorblock.settings.shadow_color.red }}, {{ colorblock.settings.shadow_color.green }},{{ colorblock.settings.shadow_color.blue }};
+    }
+{% endif %}
+    #shopify-section-{{ section.id }}{
+        --section-padding-top: {{ section.settings.padding_top }}px;
+--section-padding-bottom: {{ section.settings.padding_bottom }}px;
+        --heading-alignment: {{ section.settings.heading_alignment }};
+        --content-alignment: {{ section.settings.content_alignment }};
+        --space-between-mobile: var(--grid-mobile-horizontal-spacing);
+        --space-between-desktop: var(--grid-desktop-horizontal-spacing);
+        {% comment %} --item-width-xs: {{ slides_per_view_mobile | minus: 1 | times: space_between_mobile | plus: offset_swiper_mobile | prepend: 'calc((100% - ' | append: 'px)/' | append: slides_per_view_mobile | append: ')'  }}; {% endcomment %}
+        --item-width-xs: calc((100% - (({{ slides_per_view_mobile }} - 1) * var(--space-between-mobile) + {{ offset_swiper_mobile }}px)) / {{ slides_per_view_mobile }});
+        {% comment %} --item-width-md: {{ slides_per_view_tablet | minus: 1 | times: space_between_desktop | prepend: 'calc((100% - ' | append: 'px)/' | append: slides_per_view_tablet | append: ')'  }}; {% endcomment %}
+        --item-width-md: calc((100% - (({{ slides_per_view_tablet }} - 1) * var(--space-between-desktop))) / {{ slides_per_view_tablet }});
+        {% comment %} --item-width-lg: {{ slides_per_view_laptop | minus: 1 | times: space_between_desktop | prepend: 'calc((100% - ' | append: 'px)/' | append: slides_per_view_laptop | append: ')'  }}; {% endcomment %}
+        --item-width-lg: calc((100% - (({{ slides_per_view_laptop }} - 1) * var(--space-between-desktop))) / {{ slides_per_view_laptop }});
+        {% comment %} --item-width-xl: {{ slides_per_view_desktop | minus: 1 | times: space_between_desktop | prepend: 'calc((100% - ' | append: 'px)/' | append: slides_per_view_desktop | append: ')'  }}; {% endcomment %}
+        --item-width-xl: calc((100% - (({{ slides_per_view_desktop }} - 1) * var(--space-between-desktop))) / {{ slides_per_view_desktop }});
+    }
+</style>
+<div id="smi-{{ section.id }}" class="smi-{{ section.id }} smi-section__inner smi-gradient smi-section-image-with-text-3 smi-color-{{ section.settings.color_scheme }}" data-section="image-with-text-3" data-name="✧Image with text 3">
+      
+    {% render 'smi-background' %}
+    <div class="smi-container">
+         {%-liquid
+    if settings.smi_animations_reveal_on_scroll != nil
+        assign animation_scroll = settings.smi_animations_reveal_on_scroll
+    else
+        assign global_settings = shop.metafields.smind.settings.value
+        assign animation_scroll = global_settings.revealOnScroll
+    endif
+-%}
+<div class="smi-heading-component smi-heading-component--align-{{section.settings.heading_alignment}} smi-link-wrapper" {{- block.shopify_attributes -}}    >
+  {% liquid
+    assign heading = section.settings.heading | strip
+    assign sub_heading = section.settings.sub_heading | strip
+    assign description = section.settings.description | strip
+  %}
+  <div class="smi-heading-inner
+    {%- if animation_scroll %} smi-scroll-trigger smi-animate--slide-in{% endif -%}
+    {%- if heading != blank or sub_heading != blank or description != blank %} smi-mb-xxl{% endif -%}
+    ">
+        {%- assign sub_heading = section.settings.sub_heading | strip -%}
+{% if sub_heading != blank %}
+    <p class="smi-text-sub smi-mb-xxs smi-heading-component__subheading">{{- sub_heading -}}</p>
+{% endif %} 
+        {%- assign description = section.settings.description | strip -%}
+{%- assign heading = section.settings.heading | strip -%}
+{% if heading != blank %}
+    <h2 class="{{ section.settings.heading_size }} {% if description != blank %}smi-mb-sm{% endif %} smi-heading-component__heading">{{- heading -}}</h2>
+{% endif %} 
+        {%- assign description = section.settings.description | strip -%}
+{% if description != blank %}
+    <div class="smi-text-md smi-heading-component__description">{{ description }}</div>
+{% endif %}
+    </div>
+</div>
+    </div>
+    {% comment %}Swiper Slide{% endcomment %}
+    {%-liquid
+    if settings.smi_animations_reveal_on_scroll != nil
+        assign animation_scroll = settings.smi_animations_reveal_on_scroll
+    else
+        assign global_settings = shop.metafields.smind.settings.value
+        assign animation_scroll = global_settings.revealOnScroll
+    endif
+-%}
+    <div class="smi-section-image-with-text-3__main {% if section.settings.enable_swipe_on_mobile == true %}smi-swipe-on-mobile{% else %}smi-grid-on-mobile{% endif %}">
+        <div class="{% if section.settings.container_full_width %}smi-container-fluid{% else %}smi-container{% endif -%} {%- if animation_scroll %} smi-scroll-trigger smi-animate--slide-in smi-animate-order-1{% endif -%}">
+            <div class="swiper smi-swiper" data-swiper-options='{"spaceBetween":{{ space_between_mobile }},"pageDotStyle":"text-style-2"}'>
+                <div class="swiper-wrapper">
+                    {% assign shape_index = 1 %}
+                    {% for block in section.blocks %}
+                        {% if block.type == 'video_block' or block.type == 'image_block' %}
+                            {%-liquid
+    assign media_ratio = section.settings.media_ratio
+    assign media_shape = section.settings.media_shape
+    assign media_classes = 'smi-w-100 smi-object-fit-cover '
+    if media_shape != 'default' and media_shape != 'round'
+        if shape_index > 6
+            assign shape_index = 1
+        endif
+        if shape_index < 6 
+            assign forloop_next = shape_index | plus: 1
+        else
+            assign forloop_next = 1
+        endif
+        assign media_classes = media_classes | append: ' smi-shape-blob-' | append: shape_index
+        assign shape_index = shape_index | plus: 1
+        assign shape_hover = '--shape-blob-' | append: forloop_next
+    endif
+    if media_ratio == 'auto' 
+        assign media_classes = media_classes | append: ' smi-h-auto'
+    else
+        assign media_classes = media_classes | append: ' smi-h-100 smi-p-absolute'
+    endif
+    assign media_wrapper_classes = 'smi-media-wrapper smi-border smi-shadow smi-lh-0 smi-overflow-hidden smi-p-relative smi-' | append: media_shape
+    if media_shape contains 'blob'
+        assign media_wrapper_classes = media_wrapper_classes | append: ' smi-blob-wrapper smi-has-blob'
+    endif
+-%}
+                            <div class="swiper-slide" data-swiper-slide-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+                                <div class="card-collection-wrap">
+                                    {%- liquid
+    assign author_name = block.settings.author_name | strip
+    assign author_info = block.settings.author_info | strip
+    assign verified_buyer = block.settings.verified_buyer
+    assign nation = block.settings.nation
+    assign heading = block.settings.heading | strip
+    assign description = block.settings.description | strip
+    assign image = block.settings.image
+    assign product = block.settings.product
+    assign has_product = ''
+    if product != blank
+        assign has_product = 'smi-has-product'
+    endif
+-%}
+{% assign img_classes = media_classes %}
+<div class="smi-item smi-d-flex {{- ' smi-hover-bg-image-' | append: settings.smi_animations_hover_image | default: shop.metafields.smind.settings.value.imageHoverEffect | default: 'none' }}">
+    {%- if block.type == 'image_block' -%}
+        <div class="smi-item__media smi-lh-0 smi-media-wrapper smi-media {{ media_wrapper_classes }} {{ settings.smi_animations_hover_image | default: shop.metafields.smind.settings.value.imageHoverEffect | default: 'none' | prepend: ' smi-hover-image-' }}" 
+            style="--media-ratio: {{ media_ratio }}; --shape-hover: var({{ shape_hover }})">
+            {% comment %} <div class="smi-cover-image"
+                onclick="smiLiteModal.open('#modal_{{section.id}}{{block.id}}')"> {% endcomment %}
+                {% assign img_classes = media_classes | append: 'smi-default-image' %}
+                {%- if image != blank -%}
+                    {{ image | image_url: width: 800 | image_tag: loading: 'lazy', class: media_classes }}
+                {% else %}
+                {{ 'hero-apparel-3' | placeholder_svg_tag: media_classes }}
+                {%- endif -%}
+            {% comment %} </div> {% endcomment %}
+        </div>
+    {%- elsif block.type == 'video_block' -%}
+    <div class="smi-item__media smi-lh-0 smi-autoplay-{{ block.settings.autoplay }} smi-media-wrapper smi-media-wrapper-{{ section.id }}-{{ forloop.index }} smi-media {{ media_wrapper_classes }}" style="--media-ratio: {% if block.settings.autoplay == true and media_ratio == 'auto' %}4/3{% else %}{{ media_ratio }}{% endif %};; --shape-hover: var({{ shape_hover }});">
+            {%- if block.settings.autoplay == true -%}
+                {% assign has_video = false %}
+                {% if block.settings.video != blank %}
+                    {% assign has_video = true %}
+                    {% assign smi_bg_vi_cus = media_classes | append: " smi-background-video" %}
+                    {{ block.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, image_size: '1100x', class: smi_bg_vi_cus }}
+                {% elsif block.settings.video_url != blank %}
+                    {% assign has_video = true %}
+                    <div class="smi-video-url smi-background-block {% if block.settings.autoplay == true %} smi-background-video {% endif -%} {{ media_classes }}">
+                        {%- if block.settings.video_url.type == 'youtube' -%}
+                            <iframe
+                                    src="https://www.youtube.com/embed/{{ block.settings.video_url.id }}?enablejsapi=1
+                                        {%- if block.settings.autoplay == true %}&autoplay=1&mute=1&loop=1&controls=0{% endif -%}"
+                                    class="smi-js-youtube "
+                                    allow="autoplay; encrypted-media" loading="lazy"
+                                    allowfullscreen
+                                    title="{{ block.settings.description | escape }}"
+                                    width="100%"
+                                    height="100%"
+                            ></iframe>
+                        {%- else -%}
+                            <iframe
+                                    src="https://player.vimeo.com/video/{{ block.settings.video_url.id }}?title=0&byline=0&portrait=0
+                                        {%- if block.settings.autoplay == true %}&autoplay=1&loop=1&muted=1{% endif -%}"
+                                    class="smi-js-vimeo"
+                                    allow="autoplay; encrypted-media" loading="lazy"
+                                    allowfullscreen
+                                    title="{{ block.settings.description | escape }}"
+                                    width="100%"
+                                    height="100%"
+                            ></iframe>
+                        {%- endif -%}
+                    </div>
+                {% else %} 
+                {% assign img_classes = img_classes | append: 'smi-default-image' %}
+                    {{ 'hero-apparel-3' | placeholder_svg_tag: img_classes }}
+                {% endif %}
+                {% if has_video %} 
+                    <div class="smi-volume">
+                        {% render 'smi-icons', icon: 'volumn-up' %}
+                        {% render 'smi-icons', icon: 'volumn-mute' %}
+                    </div>
+                {% endif %}
+            {%- else -%}
+                <div class="smi-cover-image {{ settings.smi_animations_hover_image | default: shop.metafields.smind.settings.value.imageHoverEffect | default: 'none' | prepend: ' smi-hover-image-' }}" 
+                    onclick="smiLiteModal.open('#modal_{{section.id}}{{block.id}}')">
+                    <div class="smi-cover-image__play-button">
+                        {% render 'smi-icons', icon: 'play-button' %}
+                    </div>
+                    {%- if block.settings.cover_image != blank -%}                        
+                    {{ block.settings.cover_image | image_url: width: 800 | image_tag: loading: 'lazy', class: img_classes }}
+                    {%- else -%}
+                    {% assign img_classes = img_classes | append: 'smi-default-image' %}
+                    {{ 'hero-apparel-3' | placeholder_svg_tag: img_classes }}
+                    {%- endif -%}
+                </div>
+                <div class="smi-video-modal smi-lite-modal smi-section smi-dropdown-popup-wrapper smi-border smi-shadow smi-modal-xl" id="modal_{{section.id}}{{block.id}}">
+                    <button onclick="smiLiteModal.close()" class="smi-modal-close">{% render 'smi-icons', icon: 'close' %}</button>
+                    {% if block.settings.video != blank %}
+                        <div class="smi-upload-video">
+                            {{ block.settings.video | video_tag: autoplay: false, loop: true, muted: false, controls: true, image_size: '1100x' }}
+                        </div>
+                    {% elsif block.settings.video_url != blank %}
+                    <div class="smi-video-url smi-background-block">
+                        {%- if block.settings.video_url.type == 'youtube' -%}
+                            <iframe
+                                src="https://www.youtube.com/embed/{{ block.settings.video_url.id }}?enablejsapi=1&autoplay=0&mute=1&loop=0&controls=1&playlist={{ block.settings.video_url.id }}&rel=0"
+                                class="smi-js-youtube"
+                                allow="autoplay; encrypted-media" loading="lazy"
+                                allowfullscreen
+                                width="100%"
+                                height="100%"
+                            ></iframe>
+                        {%- else -%}
+                            <iframe
+                                src="https://player.vimeo.com/video/{{ block.settings.video_url.id }}?autoplay=0&pip=0&muted=1"
+                                class="smi-js-vimeo"
+                                allow="autoplay; encrypted-media" loading="lazy"
+                                allowfullscreen
+                                width="100%"
+                                height="100%"
+                            ></iframe>
+                        {%- endif -%}
+                    </div>
+                    {% else %}
+                    {% assign img_classes = img_classes | append: 'smi-default-image' %}
+                    {{ 'hero-apparel-3' | placeholder_svg_tag: img_classes }}
+                    {% endif %}
+                </div>
+            {%- endif -%}
+        </div>
+    {%- endif -%}
+    <div class="smi-item-content smi-pt-lg
+        {% if section.settings.content_alignment == "right" %}
+            smi-pl-md
+        {% elsif section.settings.content_alignment == "left" %}
+            smi-pr-md
+        {% else %}
+        smi-px-md
+        {% endif %}
+        smi-content-align-{{ section.settings.content_alignment }}
+         {% comment %} smi-gradient smi-color-{{ section.settings.content_color_scheme }} {% endcomment %}
+         ">
+         {% if block.settings.heading != blank %}
+            <div class="smi-item-content-heading {{ block.settings.heading_size }}">
+                {{  block.settings.heading }}
+            </div>
+        {%  endif %}
+        {% if block.settings.content != blank %}
+            <div class="smi-item-content-detail smi-text-75 smi-mt-xxs smi-text-md">
+                {{  block.settings.content }}
+            </div>
+        {%  endif %}
+        {% if block.settings.button_label != blank %}
+            <div class="smi-component-buttons smi-mt-md smi-button-wrapper smi-component-button-{{ section.settings.content_alignment }}">
+            <a href="{% if block.settings.button_label != blank %} {{ block.settings.button_link }} {% else %}javascript:; {% endif %}" 
+                class="smi-button smi-text-button smi-button--text
+                {%- if button_style contains 'arrow' %} smi-has-icon{% endif %}
+                {{- settings.smi_animations_hover_elements | default: shop.metafields.smind.settings.value.buttonHoverEffect | default: 'none' | prepend: ' smi-hover-' -}}
+                {{- ' smi-border smi-shadow' -}}">
+            <span>
+                {{- block.settings.button_label | escape -}}
+            </span>
+            </a>
+        </div>
+        {%  endif %}
+    </div>
+    {% comment %} <div class="smi-item-content smi-py-lg smi-px-lg smi-content-align-{{ section.settings.content_alignment }} {{ has_product }} smi-gradient smi-color-{{ section.settings.content_color_scheme }}">
+        <div>
+        <div class="smi-item__author smi-mb-sm">
+            <div class="smi-name smi-d-flex smi-align-items-center smi-flex-wrap smi-column-gap-xs smi-link-wrapper">
+                {%- if author_name != '' -%}
+                    <h5 class="smi-h5 smi-color-text">{{- author_name -}}</h5>
+                {%- endif -%}
+                {%- if verified_buyer != 'none' -%}
+                    <p class="smi-name__verified smi-d-flex smi-align-items-center smi-column-gap-xxs">
+                        {% render 'smi-icons', icon: 'verify' %}
+                        {%- if verified_buyer == 'icon_with_text' -%}
+                            {% assign percent = '10%' %}
+                            <span clas="smi-text-md">{{ 'smind.general.verified_buyer' | t }}</span>
+                        {%- endif -%}
+                    </p>
+                {%- endif -%}
+            </div>
+            <div class="smi-info smi-d-flex smi-align-items-center smi-column-gap-xs smi-link-wrapper">
+                {%- if author_info != '' -%}
+                    <p class="smi-text-md smi-color-text-75">{{- author_info -}}</p>
+                {%- endif -%}
+                {% render 'smi-flags', icon: nation %}
+            </div>
+        </div>
+        <div class="smi-mb-sm">
+{%- if block.settings.star != 'none' -%}
+    <div class="smi-rating-component smi-lh-0">
+        <div class="smi-d-inline-flex smi-align-items-center smi-column-gap-xxs smi-rating-component-inner smi-rating-inner--small">
+    {%- assign star = block.settings.star | times: 1 -%}
+    {%- assign star_floor = star | floor -%}
+    {%- assign star_ceil = star | ceil -%}
+    {% for i in (1..5) %}
+       {%- if i <= star_floor -%}
+            <span>{% render 'smi-icons', icon: 'star-2' %}</span>
+        {% elsif i > star_floor and i <= star_ceil %}
+            <span>{% render 'smi-icons', icon: 'star-half' %}</span>
+        {% elsif i > star_ceil  %}
+            <span>{% render 'smi-icons', icon: 'star' %}</span>
+        {%- endif -%}
+    {% endfor %}
+</div>
+    </div>
+{%- endif -%}
+        </div>
+        {%- if heading != '' -%}
+            <h4 class="{{ block.settings.heading_size }} smi-mb-xs smi-item__title smi-color-text smi-link-wrapper">{{- heading -}}</h4>
+        {%- endif -%}
+        {%- if description != '' -%}
+            <div class="smi-text-md smi-color-text-75 smi-mb-0 smi-item__description smi-link-wrapper">{{- description -}}</div>
+        {%- endif -%}
+        </div>
+        {%- if product != bank -%}
+            <div class="smi-item__product smi-mt-lg smi-pt-lg smi-d-flex smi-align-items-center smi-column-gap-sm">
+                {%- if product.featured_media -%}
+                    <a href="{{product.url}}" target="_blank" class="smi-product-image smi-media-wrapper smi-media-settings smi-w-50px smi-h-50px">
+                        {{ product.featured_media | image_url: width: 150 | image_tag: loading: 'lazy', class: '' }}
+                    </a>
+                {%- endif -%}
+                <h5 class="smi-h5"><a class="smi-color-text" href="{{product.url}}" target="_blank">{{- product.title -}}</a></h5>
+            </div>
+        {%- endif -%}
+    </div> {% endcomment %}
+</div> 
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="smi-swiper-controls">
+                <div class="smi-swiper-pagination smi-pt-xl smi-mw-100">
+  <div class="smi-slider-dot-container">
+      <div class="smi-component-sticky-page-dot">
+        <div class="smi-slider-action">
+          <div class="smi-arrows {{ 'text-style-2' }}">
+            <div data-control="textPrevSlide" class="smi-arrow dot-arrow-slider smi-text-sm">{% render 'smi-icons', icon: 'arrow-left' %}</div>
+            <div class="text-pagination smi-pagination smi-slider-pagination smi-text-sm smi-arrow"></div>
+            <div data-control="textNextSlide" class="smi-arrow dot-arrow-slider smi-text-sm">{% render 'smi-icons', icon: 'arrow-right' %}</div>
+          </div>
+        </div>
+      </div>
+  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+	"name": "✧Image with text 3-1",
+	"tag": "section",
+	"class": "smi-section smi-image-with-text-3",
+	"settings": [
+		{
+			"type": "checkbox",
+			"id": "container_full_width",
+			"label": "Container full-width",
+			"default": false
+		},
+		{
+			"type": "inline_richtext",
+			"id": "sub_heading",
+			"label": "Subheading",
+			"default": "URNA CRAS MAURIS"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "heading",
+			"label": "Heading",
+			"default": "Happy Customers Say"
+		},
+		{
+			"type": "select",
+			"id": "heading_size",
+			"label": "Heading size",
+			"options": [
+				{
+					"value": "smi-h4",
+					"label": "XS"
+				},
+				{
+					"value": "smi-h3",
+					"label": "S"
+				},
+				{
+					"value": "smi-h2",
+					"label": "M"
+				},
+				{
+					"value": "smi-h1",
+					"label": "L"
+				}
+			],
+			"default": "smi-h2"
+		},
+		{
+			"type": "richtext",
+			"id": "description",
+			"label": "Description",
+			"default": "<p>Commodo lorem morbi aliquam dui turpis. Iaculis pretium posuere nulla tincidunt blandit. A at elementum faucibus integer.</p>"
+		},
+		{
+			"type": "text_alignment",
+			"id": "heading_alignment",
+			"label": "Heading alignment",
+			"default": "center"
+		},
+		{
+			"type": "text_alignment",
+			"id": "content_alignment",
+			"label": "Content alignment",
+			"default": "left"
+		},
+		{
+			"type": "header",
+			"content": "Media settings"
+		},
+		{
+			"type": "select",
+			"id": "media_ratio",
+			"label": "Media ratio",
+			"options": [
+				{
+					"value": "auto",
+					"label": "Adapt"
+				},
+				{
+					"value": "3/2",
+					"label": "Landscape"
+				},
+				{
+					"value": "1/1",
+					"label": "Square"
+				},
+				{
+					"value": "3/4",
+					"label": "Portrait"
+				}
+			],
+			"default": "3/4"
+		},
+		{
+			"type": "select",
+			"id": "media_shape",
+			"label": "Media shape",
+			"options": [
+				{
+					"value": "default",
+					"label": "Default"
+				},
+				{
+					"value": "round",
+					"label": "Round"
+				},
+				{
+					"value": "shape-blob",
+					"label": "Blob"
+				}
+			],
+			"default": "default",
+			"info": "Media theme settings don't apply to the \"Blob\" shape."
+		},
+		{
+			"type": "header",
+			"content": "Layout settings "
+		},
+		{
+			"type": "select",
+			"id": "number_of_columns_on_desktop",
+			"label": "Number of columns on desktop",
+			"options": [
+				{
+					"value": "2",
+					"label": "2"
+				},
+				{
+					"value": "3",
+					"label": "3"
+				},
+				{
+					"value": "4",
+					"label": "4"
+				},
+				{
+					"value": "5",
+					"label": "5"
+				},
+				{
+					"value": "6",
+					"label": "6"
+				}
+			],
+			"default": "5"
+		},
+		{
+			"type": "select",
+			"id": "number_of_columns_on_mobile",
+			"label": "Number of columns on mobile",
+			"options": [
+				{
+					"value": "1",
+					"label": "1"
+				},
+				{
+					"value": "2",
+					"label": "2"
+				}
+			],
+			"default": "1"
+		},
+		{
+			"type": "checkbox",
+			"id": "enable_swipe_on_mobile",
+			"label": "Enable swipe on mobile",
+			"default": true
+		},
+		{
+			"type": "header",
+			"content": "Color"
+		},
+		{
+			"type": "select",
+            "options": [
+                {
+                    "value": "scheme_1",
+                    "label": "Scheme 1"
+                },
+                {
+                    "value": "scheme_2",
+                    "label": "Scheme 2"
+                },
+                {
+                    "value": "scheme_3",
+                    "label": "Scheme 3"
+                },
+                {
+                    "value": "scheme_4",
+                    "label": "Scheme 4"
+                },
+                {
+                    "value": "scheme_5",
+                    "label": "Scheme 5"
+                },
+                {
+                    "value": "scheme_6",
+                    "label": "Scheme 6"
+                },
+                {
+                    "value": "scheme_7",
+                    "label": "Scheme 7"
+                },
+                {
+                    "value": "scheme_8",
+                    "label": "Scheme 8"
+                },
+                {
+                    "value": "scheme_9",
+                    "label": "Scheme 9"
+                },
+                {
+                    "value": "scheme_10",
+                    "label": "Scheme 10"
+                }
+            ],
+			"id": "color_scheme",
+			"label": "Color Scheme"
+		},
+		{
+			"type": "header",
+			"content": "Section padding"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 200,
+			"step": 2,
+			"unit": "px",
+			"label": "Top padding",
+			"default": 50
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 200,
+			"step": 2,
+			"unit": "px",
+			"label": "Bottom padding",
+			"default": 50
+		}
+	],
+	"blocks": [
+		{
+			"name": "Image with text",
+			"limit": 20,
+			"type": "image_block",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "Image"
+				},
+				{
+					"type": "header",
+					"content": "Content"
+				},
+				{
+					"type": "inline_richtext",
+					"id": "heading",
+					"label": "Heading",
+					"default": "Amazing Flavor!"
+				},
+				{
+					"type": "select",
+					"id": "heading_size",
+					"label": "Heading size",
+					"options": [
+						{
+							"value": "smi-h6",
+							"label": "XS"
+						},
+						{
+							"value": "smi-h5",
+							"label": "S"
+						},
+						{
+							"value": "smi-h4",
+							"label": "M"
+						},
+						{
+							"value": "smi-h3",
+							"label": "L"
+						}
+					],
+					"default": "smi-h4"
+				},
+				{
+					"type": "richtext",
+					"id": "content",
+					"label": "Content",
+					"default": "<p>Gravida erat neque auctor quam neque. Pulvinar sit sagittis nisl purus eget. Id commodo</p>"
+				},
+				{
+					"type": "text",
+					"id": "button_label",
+					"label": "Button label",
+					"default": "Button label",
+					"info": "Leave the label blank to hide the button."
+				},
+				{
+					"type": "url",
+					"id": "button_link",
+					"label": "Button link"
+				}
+			]
+		},
+		{
+			"name": "Video with text",
+			"limit": 20,
+			"type": "video_block",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "cover_image",
+					"label": "Cover image",
+					"info": "The image above will show if autoplay is disabled."
+				},
+				{
+					"type": "video",
+					"id": "video",
+					"label": "Upload video"
+				},
+				{
+					"type": "video_url",
+					"id": "video_url",
+					"label": "Video URL",
+					"accept": [
+						"youtube",
+						"vimeo"
+					]
+				},
+				{
+					"type": "checkbox",
+					"id": "autoplay",
+					"label": "Autoplay",
+					"default": false
+				},
+				{
+					"type": "header",
+					"content": "Content"
+				},
+				{
+					"type": "inline_richtext",
+					"id": "heading",
+					"label": "Heading",
+					"default": "Amazing Flavor!"
+				},
+				{
+					"type": "select",
+					"id": "heading_size",
+					"label": "Heading size",
+					"options": [
+						{
+							"value": "smi-h6",
+							"label": "XS"
+						},
+						{
+							"value": "smi-h5",
+							"label": "S"
+						},
+						{
+							"value": "smi-h4",
+							"label": "M"
+						},
+						{
+							"value": "smi-h3",
+							"label": "L"
+						}
+					],
+					"default": "smi-h4"
+				},
+				{
+					"type": "richtext",
+					"id": "content",
+					"label": "Content",
+					"default": "<p>Gravida erat neque auctor quam neque. Pulvinar sit sagittis nisl purus eget. Id commodo</p>"
+				},
+				{
+					"type": "text",
+					"id": "button_label",
+					"label": "Button label",
+					"default": "Button label",
+					"info": "Leave the label blank to hide the button."
+				},
+				{
+					"type": "url",
+					"id": "button_link",
+					"label": "Button link"
+				}
+			]
+		},
+		{
+			"name": "Color",
+			"limit": 1,
+			"type": "color",
+			"settings": [
+				{
+					"type": "paragraph",
+					"content": "How to use “Color block” and “Color scheme”. [Learn more](https://docs.smind.io/guides/color-block-and-color-scheme)"
+				},
+				{
+					"type": "color",
+					"id": "background_color",
+					"default": "#F3F3F3",
+					"label": "Background"
+				},
+				{
+					"type": "color_background",
+					"id": "background_gradient_color",
+					"label": "Background gradient",
+					"info": "Background gradient replaces background where possible."
+				},
+				{
+					"type": "color",
+					"id": "text_color",
+					"default": "#121212",
+					"label": "Text"
+				},
+				{
+					"type": "color",
+					"id": "subtext_color",
+					"default": "#121212",
+					"label": "Subtext"
+				},
+				{
+					"type": "color",
+					"id": "outline_button_color",
+					"default": "#121212",
+					"label": "Outline buttton"
+				},
+				{
+					"type": "color",
+					"id": "shadow_color",
+					"default": "#121212",
+					"label": "Shadow"
+				}
+			]
+		},
+		{
+			"name": "Background",
+			"limit": 1,
+			"type": "background",
+			"settings": [
+				{
+					"type": "color",
+					"id": "background_simple",
+					"label": "Background section"
+				},
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "Image"
+				},
+				{
+					"type": "image_picker",
+					"id": "image_mobile",
+					"label": "Mobile image (optional)"
+				},
+				{
+					"type": "select",
+					"id": "animation",
+					"label": "Image animation",
+					"options": [
+						{
+							"label": "None",
+							"value": "none"
+						},
+						{
+							"label": "Ambient movement",
+							"value": "ambient_movement"
+						},
+						{
+							"label": "Parallax",
+							"value": "parallax"
+						}
+					],
+					"default": "none"
+				},
+				{
+					"type": "header",
+					"content": "Video background"
+				},
+				{
+					"type": "video",
+					"id": "video",
+					"label": "Upload video"
+				},
+				{
+					"type": "video_url",
+					"id": "video_url",
+					"label": "Video URL",
+					"accept": [
+						"youtube",
+						"vimeo"
+					]
+				},
+				{
+					"type": "color_background",
+					"id": "background_overlay",
+					"label": "Overlay background"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "✧Image with text 3-1",
+			"settings": {
+				"container_full_width": false,
+				"sub_heading": "",
+				"heading": "Summer's in session",
+				"heading_size": "smi-h2",
+				"description": "",
+				"heading_alignment": "center",
+				"content_alignment": "center",
+				"media_ratio": "1/1",
+				"media_shape": "default",
+				"number_of_columns_on_desktop": "3",
+				"number_of_columns_on_mobile": "1",
+				"enable_swipe_on_mobile": true,
+				"padding_top": 50,
+				"padding_bottom": 50
+			},
+			"blocks": [
+				{
+					"type": "image_block",
+					"settings": {
+						"image": "shopify://shop_images/smi-smi-clothing_comparison_32c14f88-01b0-4fca-91e9-6644313371cb.jpg",
+						"heading": "Self - expression",
+						"heading_size": "smi-h4",
+						"content": "<p>Fashion allows individuals to express their unique personalities, tastes, and cultural identities through clothing choices.</p>",
+						"button_label": "",
+						"button_link": null
+					}
+				},
+				{
+					"type": "image_block",
+					"settings": {
+						"image": "shopify://shop_images/smi-smi-shirt-classic-03_c1ab6494-0b6f-400f-bc46-0059b036f18b.jpg",
+						"heading": "Trendsetting",
+						"heading_size": "smi-h4",
+						"content": "<p>Fashion is constantly evolving, with trends emerging and fading with each season. From the runway to the streets.</p>",
+						"button_label": "",
+						"button_link": null
+					}
+				},
+				{
+					"type": "image_block",
+					"settings": {
+						"image": "shopify://shop_images/smi-smi-review_clothing-42_27f1b4e5-74a6-43f2-a4e3-3d24ca19f944.jpg",
+						"heading": "Creativity and innovation",
+						"heading_size": "smi-h4",
+						"content": "<p>Fashion is a dynamic industry driven by create and innovation. Designers constantly push the boundaries of what's possible.</p>",
+						"button_label": "",
+						"button_link": null
+					}
+				},
+				{
+					"type": "image_block",
+					"settings": {
+						"image": "shopify://shop_images/smi-smi-image_clothing-76_5be22d50-cf31-4bbd-a5c1-1cde58bf9024.jpg",
+						"heading": "Fall fashion preview",
+						"heading_size": "smi-h4",
+						"content": "<p>Fall in love with the latest fashion collection! Embrace the cozy vibeswith our chic sweaters, stylish boots.</p>",
+						"button_label": "",
+						"button_link": null
+					}
+				},
+				{
+					"type": "image_block",
+					"settings": {
+						"image": "shopify://shop_images/smi-smi-image_clothing-02_3_a881fbd6-e2cd-45c8-9507-e5f4ec387595.jpg",
+						"heading": "Better for the planet",
+						"heading_size": "smi-h4",
+						"content": "<p>Let it snow! Warm up to our winter wonderland sale with unbeatable discounts on cold-weather essentials. </p>",
+						"button_label": "",
+						"button_link": null
+					}
+				},
+				{
+					"type": "image_block",
+					"settings": {
+						"image": "shopify://shop_images/smi-smi-smi-clothing-classic-17_39200e75-4573-48b5-8af6-7bfb8bd3382b.jpg",
+						"heading": "Get out and accessorize",
+						"heading_size": "smi-h4",
+						"content": "<p>Whether you're strolling through pumpkin patches or sipping pumpkin spice lattes, our fall fashion has you covered.</p>",
+						"button_label": "",
+						"button_link": null
+					}
+				},
+				{
+					"type": "color",
+					"settings": {
+						"background_color": "#fcf8f5",
+						"background_gradient_color": "",
+						"text_color": "#000000",
+						"subtext_color": "#000000",
+						"outline_button_color": "#000000",
+						"shadow_color": "#000000"
+					}
+				}
+			]
+		}
+	]
+}
+{% endschema %}
+
+{% style %}
+	.smi-media-wrapper{aspect-ratio:var(--media-ratio)}.smi-media-wrapper:hover img,.smi-media-wrapper:hover svg,.smi-media-wrapper:hover video,.smi-media-wrapper:hover iframe,.smi-media-wrapper:hover div{clip-path:polygon(var(--shape-hover));transition:all .4s}.smi-blob-wrapper.smi-has-blob{border:none !important;box-shadow:none !important}.smi-section-image-with-text-3{overflow:hidden}.smi-section-image-with-text-3 .smi-component-buttons{width:100%}.smi-section-image-with-text-3 .smi-text-75{opacity:.75}.smi-section-image-with-text-3 .smi-component-button-left{justify-content:left}.smi-section-image-with-text-3 .smi-component-button-center{justify-content:center}.smi-section-image-with-text-3 .smi-component-button-right{justify-content:right}@media screen and (max-width: 767.8px){.smi-section-image-with-text-3__main.smi-swipe-on-mobile .smi-swiper{overflow:visible}.smi-section-image-with-text-3__main.smi-swipe-on-mobile .swiper-slide{width:var(--item-width-xs);transition:opacity .3s ease-in-out;opacity:0}.smi-section-image-with-text-3__main.smi-swipe-on-mobile .swiper-wrapper:has(>.swiper-slide:only-child){justify-content:center}.smi-section-image-with-text-3__main.smi-swipe-on-mobile .swiper-slide:only-child{max-width:800px}.smi-section-image-with-text-3__main.smi-swipe-on-mobile .swiper-slide:last-child{margin-right:0 !important}.smi-section-image-with-text-3__main.smi-swipe-on-mobile .swiper-slide-visible{opacity:1}.smi-section-image-with-text-3__main.smi-swipe-on-mobile .smi-swiper-controls{display:flex}}.smi-section-image-with-text-3 .smi-swiper-controls{width:100%;display:none;justify-content:center}.smi-section-image-with-text-3 .smi-swiper-pagination{--swiper-pagination-bottom: 0}.smi-section-image-with-text-3 .smi-item{flex-direction:column;height:100%;overflow:visible}.smi-section-image-with-text-3 .smi-item .smi-item-content{box-sizing:border-box;text-align:var(--content-alignment);flex:1;border-top-left-radius:0;border-top-right-radius:0;border-top:0}.smi-section-image-with-text-3 .smi-item .smi-item-content.smi-has-product{display:flex;flex-direction:column;justify-content:space-between;flex:1}.smi-section-image-with-text-3 .smi-item__author{text-align:var(--content-alignment)}.smi-section-image-with-text-3 .smi-item__author .smi-name{justify-content:var(--content-alignment)}.smi-section-image-with-text-3 .smi-item__author .smi-name__verified span{color:var(--color-verified)}.smi-section-image-with-text-3 .smi-item__author .smi-name svg{width:calc(16px*var(--font-body-scale));width:calc(16px*var(--font-body-scale));stroke:var(--color-verified)}.smi-section-image-with-text-3 .smi-item__author .smi-name svg path{fill:var(--color-verified)}.smi-section-image-with-text-3 .smi-item__author .smi-info{justify-content:var(--content-alignment)}.smi-section-image-with-text-3 .smi-item__author .smi-info p{word-wrap:break-word;max-width:calc(100% - 32px)}.smi-section-image-with-text-3 .smi-item__product{border-top:1px solid rgba(var(--color-foreground), 0.15);justify-content:var(--content-alignment)}.smi-section-image-with-text-3 .smi-item__product .smi-product-image{min-width:50px;min-height:50px;position:relative;display:block;border-radius:var(--media-radius);overflow:hidden}.smi-section-image-with-text-3 .smi-item__product .smi-product-image img{left:0;top:0;position:absolute;width:100%;height:100%;object-fit:cover}.smi-section-image-with-text-3 .smi-item__media{position:relative;display:flex;line-height:0;overflow:hidden}.smi-section-image-with-text-3 .smi-item__media:before{content:"";background:rgba(0,0,0,0);width:100%;height:100%;position:absolute;z-index:-1}.smi-section-image-with-text-3 .smi-item__media.smi-autoplay-false{align-items:center}.smi-section-image-with-text-3 .smi-item__media.smi-autoplay-false video{height:auto}.smi-section-image-with-text-3 .smi-item__media img{width:100%;height:100%;object-fit:cover}.smi-section-image-with-text-3 .smi-item__media svg.smi-default-image{position:absolute;width:102%;height:102%;object-fit:cover}.smi-section-image-with-text-3 .smi-item__media video,.smi-section-image-with-text-3 .smi-item__media video>*{width:100%;height:100%}.smi-section-image-with-text-3 .smi-item__media iframe{border:none}.smi-section-image-with-text-3 .smi-item__media .smi-cover-image{z-index:1;left:0;top:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center}.smi-section-image-with-text-3 .smi-item__media .smi-cover-image img{left:0;top:0;width:100%;height:100%;object-fit:cover}.smi-section-image-with-text-3 .smi-item__media .smi-cover-image__play-button{position:absolute;z-index:2;display:flex;padding:16px;align-items:center;justify-content:center;border-radius:100px;border:2px solid #fff;background:rgba(0,0,0,.1);backdrop-filter:blur(1.5px);cursor:pointer;transition:all .5s ease}.smi-section-image-with-text-3 .smi-item__media .smi-cover-image__play-button svg{stroke:#fff}.smi-section-image-with-text-3 .smi-item__media .smi-cover-image__play-button svg path{fill:#fff}.smi-section-image-with-text-3 .smi-item__media .smi-cover-image__play-button:hover{scale:1.05}.smi-section-image-with-text-3 .smi-item__media .smi-volume{position:absolute;bottom:20px;right:20px;cursor:pointer}.smi-section-image-with-text-3 .smi-item__media .smi-volume svg{stroke:#fff}.smi-section-image-with-text-3 .smi-item__media .smi-volume svg path{fill:#fff}.smi-section-image-with-text-3 .smi-item__media .smi-volume svg:nth-child(2){display:none}.smi-section-image-with-text-3 .smi-item__media .smi-volume.up svg:nth-child(1){display:none}.smi-section-image-with-text-3 .smi-item__media .smi-volume.up svg:nth-child(2){display:block}@media screen and (max-width: 767.8px){.smi-section-image-with-text-3__main.smi-grid-on-mobile .swiper{overflow:visible}.smi-section-image-with-text-3__main.smi-grid-on-mobile .swiper-wrapper{flex-wrap:wrap;column-gap:var(--space-between-mobile);row-gap:calc(var(--grid-mobile-vertical-spacing) + 8px)}.smi-section-image-with-text-3__main.smi-grid-on-mobile .swiper-slide{width:var(--item-width-xs)}}@media screen and (min-width: 768px){.smi-section-image-with-text-3__main .swiper{overflow:visible}.smi-section-image-with-text-3__main .swiper-wrapper{flex-wrap:wrap;column-gap:var(--space-between-desktop);row-gap:calc(var(--grid-desktop-vertical-spacing) + 16px)}.smi-section-image-with-text-3__main .swiper-slide{width:var(--item-width-md);height:auto}}@media screen and (min-width: 992px){.smi-section-image-with-text-3__main .swiper-slide{width:var(--item-width-lg)}}@media screen and (min-width: 1200px){.smi-section-image-with-text-3__main .swiper-slide{width:var(--item-width-xl)}}.smi-section-image-with-text-3 .smi-card-collection{word-wrap:break-word}.smi-section-image-with-text-3 .smi-card-collection__content{text-align:var(--content-alignment)}@media screen and (max-width: 767px){.smi-section-image-with-text-3 .smi-cover-image__play-button{padding:14px !important}}
+{% endstyle %}
+<script>
+
+(function (){
+    class SMI_Slide{
+        swiper = null;
+        sectionId = null;
+        sectionEl = null;
+        constructor(sectionId) {
+            this.sectionId = sectionId.replace('smi-','');
+            this.sectionEl = document.querySelector(`#${sectionId}`);
+            this._handleInitSwiper();
+            this._toggleVolume()
+        }
+
+        _toggleVolume() {
+            const selector = '#smi-{{ section.id }} .smi-swiper'
+            const parent = document.querySelector(selector)
+            const buttons = parent.querySelectorAll('.smi-volume')
+            if (!buttons.length) {
+                return null
+            }
+            console.log('ok')
+            buttons.forEach((button) => {
+                button.addEventListener('click', e => {
+                    const parent = button.closest('.smi-item__media')
+                    let video = parent.querySelector('video')
+                    let videoY = parent.querySelector('.smi-js-youtube')
+                    let videoV = parent.querySelector('.smi-js-vimeo')
+                    if (button.classList.contains('up')) {
+                        button.classList.remove('up')
+                        if (video) {
+                            video.muted = true
+                        }
+
+                        if (videoY) {
+                            videoY.contentWindow.postMessage('{"event":"command","func":"mute","args":""}', "*");
+                        }
+
+                        if (videoV) {
+                            videoV.contentWindow.postMessage('{"method":"setVolume", "value":0}', '*');
+                        }
+                    } else {
+                        button.classList.add('up')
+                        if (video) {
+                            video.muted = false
+                        }
+
+                        if (videoY) {
+                            videoY.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', "*");
+                        }
+
+                        if (videoV) {
+                            videoV.contentWindow.postMessage('{"method":"setVolume", "value":1}', '*');
+                        }
+                    }
+                })
+            })
+        }
+
+        
+
+        _swiper(){
+            if (typeof Swiper === "undefined") return null;
+            const self = this;
+            const swiperEl = this.sectionEl.querySelector('.smi-swiper');
+            const nextEl = this.sectionEl.querySelector('.arrow-slider-right');
+            const prevEl = this.sectionEl.querySelector('.arrow-slider-left');
+            const paginationEl = this.sectionEl.querySelector('.smi-pagination');
+            let swiperParams = {
+                init: true,
+                slidesPerView: 'auto',
+                loop: false,
+                
+                watchSlidesProgress: true,
+                pagination: {
+                    el: paginationEl,
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: nextEl,
+                    prevEl: prevEl,
+                },
+                on:{
+                    afterInit(){
+                        
+                    }
+                }
+            }
+
+            try {
+                const swiperOptions = JSON.parse(swiperEl.getAttribute("data-swiper-options"));
+                swiperParams = {...swiperParams, ...swiperOptions}
+
+                if(swiperParams.pageDotStyle.includes('text-style')){
+                    swiperParams.pagination.type = "fraction";
+                    delete swiperParams.pageDotStyle;
+                }
+
+            }catch (e) {
+                console.log("Attribute data-swiper-options invalid JSON!")
+            }
+
+            this.swiper = new Swiper(swiperEl, swiperParams);
+
+        }
+
+        _handlePagination(){
+            if (this.sectionEl.querySelector('.swiper-pagination-lock')){
+                this.sectionEl.querySelector('.smi-swiper-pagination')?.classList.add('smi-d-none')
+            }
+        }
+
+        _handleInitSwiper(){
+            const wrap = this.sectionEl.querySelector('.smi-swipe-on-mobile');
+            if (!wrap) return null;
+
+            const screenResize = (mediaQuery) => {
+                if (mediaQuery.matches) {
+                    
+                    if (this.swiper?.initialized) this.swiper.destroy();
+                    this._swiper();
+                } else {
+                    
+                    if (this.swiper?.initialized) this.swiper.destroy();
+                }
+            }
+
+            
+
+            const mediaQuery  = window.matchMedia("(max-width: 767.98px)")
+            screenResize(mediaQuery)
+            mediaQuery.addListener(screenResize)
+        }
+
+        _handleArrow() {
+        }
+
+    }
+
+    document.addEventListener('DOMContentLoaded',() => {
+        new SMI_Slide('smi-{{ section.id }}')
+    })
+
+    if (Shopify?.designMode){
+        new SMI_Slide('smi-{{ section.id }}')
+    }
+
+})();
+;
+
+</script>
