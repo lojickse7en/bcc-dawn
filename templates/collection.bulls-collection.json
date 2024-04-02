@@ -254,6 +254,9 @@
         "text_JAcL8k",
         "button_HXrRwy"
       ],
+      "custom_css": [
+        "p.image-with-text__text.image-with-text__text--caption.subtitle.subtitle--large.subtitle {color: #d94f4f;}"
+      ],
       "settings": {
         "image": "shopify:\/\/shop_images\/IMG_1271.jpg",
         "height": "adapt",
@@ -312,6 +315,9 @@
         "template--21591146103091__cdfa27bc-989e-4ea0-a756-c5afe604fbf4-text-1",
         "template--21591146103091__cdfa27bc-989e-4ea0-a756-c5afe604fbf4-button-1"
       ],
+      "custom_css": [
+        "p.image-with-text__text.image-with-text__text--caption.subtitle.subtitle--large.subtitle {color: #d94f4f;}"
+      ],
       "settings": {
         "image": "shopify:\/\/shop_images\/IMG_1268.jpg",
         "height": "adapt",
@@ -369,6 +375,9 @@
         "caption_E9PCit",
         "template--21604429365555__8d1380a1-404e-4210-b5d3-dfdbc6b20a5b-text-1",
         "template--21604429365555__8d1380a1-404e-4210-b5d3-dfdbc6b20a5b-button-1"
+      ],
+      "custom_css": [
+        "p.image-with-text__text.image-with-text__text--caption.subtitle.subtitle--large.subtitle {color: #d94f4f;}"
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/IMG_1285.jpg",
