@@ -323,6 +323,9 @@
         "caption_DGky4m",
         "template--21604429365555__8d1380a1-404e-4210-b5d3-dfdbc6b20a5b-button-1"
       ],
+      "custom_css": [
+        "p.image-with-text__text.image-with-text__text--caption.subtitle.subtitle--large.subtitle {color: #d94f4f;}"
+      ],
       "settings": {
         "image": "shopify:\/\/shop_images\/M_20.jpg",
         "height": "adapt",
